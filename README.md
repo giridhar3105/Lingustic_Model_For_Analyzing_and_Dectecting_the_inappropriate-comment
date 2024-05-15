@@ -1,0 +1,2 @@
+# Lingustic_Model_For_Analyzing_and_Dectecting_the_imapporiate_Comment
+Lingustic_Model_For_Analyzing_and_Dectecting_the_imapporiate_Comment
