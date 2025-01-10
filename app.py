@@ -20,7 +20,7 @@ def toxicity_prediction(text):
     class_name = "Toxic" if prediction == 1 else "Non-Toxic"
     return class_name
 
-st.header("Safe Social Toxicity Comment Detection App")
+st.header("Linguistic Model for Detecting and Analyzing Inappropriate Comments")
 
 st.subheader("Input your text")
 
