@@ -30,7 +30,7 @@ if text_input is not None:
     if st.button("Analyse"):
         result = toxicity_prediction(text_input)
         st.subheader("Result:")
-        st.info("The comment is "+ result + ".")
+        #st.info("The comment is "+ result + ".")
 # Change background color based on the toxicity of the comment
         if result == "Toxic":
             st.markdown(
