@@ -20,17 +20,17 @@ def toxicity_prediction(text):
     class_name = "Toxic" if prediction == 1 else "Non-Toxic"
     return class_name
 
-# Enhanced UI with proper title visibility and improved layout
+# Default background color is white
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #e9f7f3; /* Soft teal background */
+        background-color: white;
     }
     .stHeader {
         font-size: 36px;
         font-weight: 700;
-        color: #2F4F4F; /* Dark Slate color for better contrast */
+        color: #2F4F4F; /* Dark Slate color */
         text-align: center;
     }
     .stSubheader {
@@ -57,18 +57,17 @@ st.markdown(
         background-color: #45a049;
     }
     .stInfo {
-        background-color: #f4f9f4; /* Light greenish background for results */
         padding: 20px;
         border-radius: 12px;
         font-size: 20px;
         font-weight: bold;
-        color: #2F4F4F; /* Dark Slate color for contrast */
+        color: #2F4F4F;
     }
     </style>
     """, unsafe_allow_html=True
 )
 
-# Title and description with center alignment
+# Title in bold
 st.markdown('<p class="stHeader">Linguistic Model for Detecting and Analyzing Inappropriate Comments</p>', unsafe_allow_html=True)
 
 st.subheader("Input your text")
@@ -79,4 +78,25 @@ if text_input:
     if st.button("Analyze"):
         result = toxicity_prediction(text_input)
         st.subheader("Result:")
-        st.info(f"The comment is **{result}**.")
+        
+        # Change background color based on the toxicity of the comment
+        if result == "Toxic":
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #f44336; /* Red background for Toxic comments */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+            st.info(f"The comment is **{result}**.", icon="🚨")
+        else:
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #87CEEB; /* Sky Blue background for Non-Toxic comments */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+            st.info(f"The comment is **{result}**.", icon="✅")
