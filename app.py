@@ -31,3 +31,24 @@ if text_input is not None:
         result = toxicity_prediction(text_input)
         st.subheader("Result:")
         st.info("The comment is "+ result + ".")
+# Change background color based on the toxicity of the comment
+        if result == "Toxic":
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #f44336; /* Red background for Toxic comments */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+            st.info(f"The comment is **{result}**.", icon="🚨")
+        else:
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #87CEEB; /* Sky Blue background for Non-Toxic comments */
+                }
+                </style>
+                """, unsafe_allow_html=True)
+            st.info(f"The comment is **{result}**.", icon="✅")
