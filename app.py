@@ -1,6 +1,6 @@
 import streamlit as st
-import pickle 
-import numpy as np 
+import pickle
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
@@ -20,14 +20,27 @@ def toxicity_prediction(text):
     class_name = "Toxic" if prediction == 1 else "Non-Toxic"
     return class_name
 
+# Add a background image
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fnjbmagazine.com%2Fmonthly-articles%2Fsocial-media-101%2F&psig=AOvVaw3MfyqKjh_nyJ6ythJaOk0l&ust=1736585289427000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCOD57L3i6ooDFQAAAAAdAAAAABAE');
+        background-size: cover;
+        background-position: center;
+    }
+    </style>
+    """, unsafe_allow_html=True
+)
+
 st.header("Linguistic Model for Detecting and Analyzing Inappropriate Comments")
 
 st.subheader("Input your text")
 
 text_input = st.text_input("Enter your Comment")
 
-if text_input is not None:
+if text_input:
     if st.button("Analyse"):
         result = toxicity_prediction(text_input)
         st.subheader("Result:")
-        st.info("The comment is "+ result + ".")
+        st.info("The comment is " + result + ".")
