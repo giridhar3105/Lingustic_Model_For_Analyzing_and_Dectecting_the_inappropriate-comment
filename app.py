@@ -72,7 +72,8 @@ st.markdown('<p class="stHeader">Linguistic Model for Detecting and Analyzing In
 
 st.subheader("Input your text")
 
-text_input = st.text_input("Enter your Comment")
+# Default text input visible
+text_input = st.text_input("Enter your Comment", "")
 
 if text_input:
     if st.button("Analyze"):
