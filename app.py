@@ -20,50 +20,56 @@ def toxicity_prediction(text):
     class_name = "Toxic" if prediction == 1 else "Non-Toxic"
     return class_name
 
-# Enhance the UI by setting a background color and improving layout
+# Enhanced UI with proper title visibility and improved layout
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #f7f7f7; /* Light grey background */
+        background-color: #e9f7f3; /* Soft teal background */
     }
     .stHeader {
-        font-size: 32px;
-        font-weight: bold;
-        color: #4CAF50; /* Green header color */
+        font-size: 36px;
+        font-weight: 700;
+        color: #2F4F4F; /* Dark Slate color for better contrast */
+        text-align: center;
     }
     .stSubheader {
         font-size: 24px;
-        color: #333; /* Dark text for subheader */
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
     }
     .stTextInput input {
         background-color: #ffffff;
         border: 2px solid #ddd;
         border-radius: 8px;
         font-size: 16px;
-        padding: 10px;
+        padding: 12px;
     }
     .stButton {
         background-color: #4CAF50;
         color: white;
         border-radius: 5px;
         font-size: 18px;
-        padding: 10px 20px;
+        padding: 12px 24px;
     }
     .stButton:hover {
         background-color: #45a049;
     }
     .stInfo {
-        background-color: #e7f7e7; /* Light green background for result */
-        padding: 15px;
-        border-radius: 10px;
-        font-size: 18px;
+        background-color: #f4f9f4; /* Light greenish background for results */
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #2F4F4F; /* Dark Slate color for contrast */
     }
     </style>
     """, unsafe_allow_html=True
 )
 
-st.header("Linguistic Model for Detecting and Analyzing Inappropriate Comments")
+# Title and description with center alignment
+st.markdown('<p class="stHeader">Linguistic Model for Detecting and Analyzing Inappropriate Comments</p>', unsafe_allow_html=True)
 
 st.subheader("Input your text")
 
@@ -73,4 +79,4 @@ if text_input:
     if st.button("Analyze"):
         result = toxicity_prediction(text_input)
         st.subheader("Result:")
-        st.info("The comment is " + result + ".")
+        st.info(f"The comment is **{result}**.")
