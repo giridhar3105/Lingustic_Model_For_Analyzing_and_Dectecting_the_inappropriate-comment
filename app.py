@@ -1,6 +1,6 @@
 import streamlit as st
-import pickle
-import numpy as np
+import pickle 
+import numpy as np 
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 
@@ -20,85 +20,14 @@ def toxicity_prediction(text):
     class_name = "Toxic" if prediction == 1 else "Non-Toxic"
     return class_name
 
-# Default background color is white
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: white;
-    }
-    .stHeader {
-        font-size: 36px;
-        font-weight: 700;
-        color: #2F4F4F; /* Dark Slate color */
-        text-align: center;
-    }
-    .stSubheader {
-        font-size: 24px;
-        color: #333;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    .stTextInput input {
-        background-color: #ffffff;
-        border: 2px solid #ddd;
-        border-radius: 8px;
-        font-size: 16px;
-        padding: 12px;
-    }
-    .stButton {
-        background-color: #4CAF50;
-        color: white;
-        border-radius: 5px;
-        font-size: 18px;
-        padding: 12px 24px;
-    }
-    .stButton:hover {
-        background-color: #45a049;
-    }
-    .stInfo {
-        padding: 20px;
-        border-radius: 12px;
-        font-size: 20px;
-        font-weight: bold;
-        color: #2F4F4F;
-    }
-    </style>
-    """, unsafe_allow_html=True
-)
-
-# Title in bold
-st.markdown('<p class="stHeader">Linguistic Model for Detecting and Analyzing Inappropriate Comments</p>', unsafe_allow_html=True)
+st.header("Linguistic Model for Detecting and Analyzing Inappropriate Comments")
 
 st.subheader("Input your text")
 
-# Text input field should be visible and not hidden
-text_input = st.text_input("Enter your Comment", "")
+text_input = st.text_input("Enter your Comment")
 
-# Ensuring the button is visible and works properly
-if text_input:
-    if st.button("Analyze"):
+if text_input is not None:
+    if st.button("Analyse"):
         result = toxicity_prediction(text_input)
         st.subheader("Result:")
-        
-        # Change background color based on the toxicity of the comment
-        if result == "Toxic":
-            st.markdown(
-                """
-                <style>
-                .stApp {
-                    background-color: #f44336; /* Red background for Toxic comments */
-                }
-                </style>
-                """, unsafe_allow_html=True)
-            st.info(f"The comment is **{result}**.", icon="🚨")
-        else:
-            st.markdown(
-                """
-                <style>
-                .stApp {
-                    background-color: #87CEEB; /* Sky Blue background for Non-Toxic comments */
-                }
-                </style>
-                """, unsafe_allow_html=True)
-            st.info(f"The comment is **{result}**.", icon="✅")
+        st.info("The comment is "+ result + ".")
