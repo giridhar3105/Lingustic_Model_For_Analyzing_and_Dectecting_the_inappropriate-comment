@@ -72,9 +72,10 @@ st.markdown('<p class="stHeader">Linguistic Model for Detecting and Analyzing In
 
 st.subheader("Input your text")
 
-# Default text input visible
+# Text input field should be visible and not hidden
 text_input = st.text_input("Enter your Comment", "")
 
+# Ensuring the button is visible and works properly
 if text_input:
     if st.button("Analyze"):
         result = toxicity_prediction(text_input)
