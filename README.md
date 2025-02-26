@@ -67,7 +67,7 @@ This project successfully demonstrates the use of linguistic analysis and machin
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/linguistic-analysis-comment-detection.git
+   git clone https://github.com/giridhar31-05linguistic-analysis-comment-detection.git
    cd linguistic-analysis-comment-detection
    ```
 2. Install the required dependencies:
